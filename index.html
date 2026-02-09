@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>粤语记忆共建馆 - 广府文化数字记忆库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background-color: #fef8f0; /* 温暖的米白底色 */
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 3rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* 头部 */
+        .site-header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            border-bottom: 2px dashed #e6d0b8;
+            margin-bottom: 3rem;
+        }
+
+        .site-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #c73e3a; /* 广州红/木棉红 */
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .site-subtitle {
+            font-size: 1.2rem;
+            color: #7a6a5f;
+            font-style: italic;
+        }
+
+        /* 主标语 */
+        .hero {
+            text-align: center;
+            background: linear-gradient(135deg, #fdf6ec 0%, #f8e9d4 100%);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 3rem;
+            box-shadow: 0 8px 20px rgba(199, 62, 58, 0.08);
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            color: #2a5c54; /* 广府青 */
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* 记忆展示区 */
+        .section-title {
+            font-size: 1.8rem;
+            color: #2a5c54;
+            border-left: 5px solid #c73e3a;
+            padding-left: 1rem;
+            margin: 3rem 0 1.5rem;
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .memory-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(199, 62, 58, 0.12);
+        }
+
+        .memory-card h3 {
+            color: #c73e3a;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+
+        .memory-card .content {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .memory-card .contributor {
+            font-size: 0.85rem;
+            color: #888;
+            text-align: right;
+            font-style: italic;
+        }
+
+        /* 投稿号召区 */
+        .cta-box {
+            background: linear-gradient(to right, #2a5c54, #3a7c6e);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .cta-box h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #f8b62d; /* 醒目的黄色 */
+            color: #333;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-decoration: none;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-button:hover {
+            background-color: #ffcc4d;
+            transform: scale(1.05);
+        }
+
+        /* 成果展示 */
+        .achievement {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .achievement-icon {
+            font-size: 2.5rem;
+            color: #c73e3a;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .achievement-text h4 {
+            color: #2a5c54;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 页脚 */
+        .site-footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #7a6a5f;
+            font-size: 0.9rem;
+            border-top: 1px solid #e6d0b8;
+            margin-top: 3rem;
+        }
+
+        .footer-links a {
+            color: #c73e3a;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .memory-grid {
+                grid-template-columns: 1fr;
+            }
+            .site-title {
+                font-size: 2.2rem;
+            }
+            .hero h2 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 网站头部 -->
+        <header class="site-header">
+            <h1 class="site-title">粤语记忆共建馆</h1>
+            <p class="site-subtitle">新老广州人，一同打捞正在消散的广府声音</p>
+        </header>
+
+        <!-- 主标语 -->
+        <section class="hero">
+            <h2>每一句俚语，都是一个故事</h2>
+            <p>我们相信，语言的生命力不在于被保护在博物馆里，而在于被每一次讲述和倾听重新激活。</p>
+            <p>这里是属于所有广州人的“数字记忆池塘”，无论你是老广还是新广州人，都可以在这里分享或打捞那些闪闪发光的文化碎片。</p>
+        </section>
+
+        <!-- 记忆展示区 -->
+        <h2 class="section-title">最新记忆碎片</h2>
+        <div class="memory-grid">
+            <div class="memory-card">
+                <h3>“水静河飞”</h3>
+                <p class="content">我阿妈成日话，礼拜日下昼，成条街“水静河飞”。形容静到连水都唔流、雀仔都唔飞，真係好有画面感！</p>
+                <p class="contributor">—— 由 西关陈伯 分享</p>
+            </div>
+            <div class="memory-card">
+                <h3>“扮晒蟹”</h3>
+                <p class="content">第一次听同事讲“唔好扮晒蟹啦”，以为係讲海鲜。原来係话人“装模作样”，真係盏鬼！</p>
+                <p class="contributor">—— 由 天河程序员小刘 记录</p>
+            </div>
+            <div class="memory-card">
+                <h3>“落雨大，水浸街”</h3>
+                <p class="content">呢首童谣陪住我大个。而家落雨时，我依然会哼俾我个仔听，希望佢都记得广州呢份独特嘅雨声同人情味。</p>
+                <p class="contributor">—— 由 海珠区阿珍 分享</p>
+            </div>
+        </div>
+
+        <!-- 投稿号召区 -->
+        <section class="cta-box">
+            <h2>你的记忆，独一无二</h2>
+            <p>你是否也有一个关于粤语词、一首童谣、一句长辈口头禅的故事？</p>
+            <p>无论是地道老广，还是对粤语充满好奇的新朋友，你的分享都将成为这座文化记忆库的一块重要拼图。</p>
+            <a href="#" class="cta-button">📝 我要分享记忆</a>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">（投稿将经过小编整理后展示在本页）</p>
+        </section>
+
+        <!-- 项目成果展示 -->
+        <h2 class="section-title">项目足迹</h2>
+        <div class="achievement">
+            <div class="achievement-icon">📚</div>
+            <div class="achievement-text">
+                <h4>扎实的调研基础</h4>
+                <p>我们已对近200名新老广州人进行访谈与问卷调查，深度剖析“语言文化焦虑”，为项目提供真实数据支持。</p>
+            </div>
+        </div>
+        <div class="achievement">
+            <div class="achievement-icon">🎨</div>
+            <div class="achievement-text">
+                <h4>文化IP“羊小咩”</h4>
+                <p>已创作出亲切可爱的本土文化IP，通过漫画与短视频，生动讲述广府故事，在社交媒体上积累首批关注。</p>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <footer class="site-footer">
+            <p>“粤语记忆共建馆”是中山大学大学生创新训练计划项目《粤讲越亲》的实践成果之一。</p>
+            <p class="footer-links">
+                <a href="#">关于我们</a> |
+                <a href="#">投稿指引</a> |
+                <a href="#">关注IP账号</a>
+            </p>
+            <p style="margin-top: 1rem;">© 2025 粤光同尘团队 保留所有权利 | 传承，从分享开始</p>
+        </footer>
+    </div>
+</body>
+</html>
